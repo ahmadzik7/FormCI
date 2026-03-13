@@ -127,7 +127,7 @@
 </div>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('project')" id="tab-project">📋 PROJECT/PERBAIKAN </button>
+  <button class="tab-btn active" onclick="switchTab('project')" id="tab-project">📋 PROJECT / CIP</button>
   <button class="tab-btn" onclick="switchTab('issue')" id="tab-issue">🔴 LAPORKAN MASALAH</button>
 </div>
 
@@ -326,12 +326,12 @@
 // ══════════════════════════════════════════════════════════════
 
 // ── CONFIG ────────────────────────────────────────────────────
-const SYNC_URL         = 'https://script.google.com/macros/s/AKfycby5RKWJP0yhGDUubEjOxP-t6gcXR2MwfbRZvru5zRXolh94wtzt76lAo3DxfV6nhFjn/exec';
+const SYNC_URL         = 'https://script.google.com/macros/s/AKfycbxiRrms3MTgxlHWoQP0u0ACtUzbO-WPLl3IIUKdfvoH96DFdnIss8BwAfuMgnkD_U3X/exec';
 const MAX_PHOTOS       = 3;
 const COMPRESS_MAX_PX  = 1024;
 const COMPRESS_QUALITY = 0.60;
 const MAX_ORIGINAL_MB  = 15;
-const FETCH_TIMEOUT_MS = 25000;  // FIX [4]: timeout 25 detik untuk semua fetch
+const FETCH_TIMEOUT_MS = 90000;  // FIX v4: timeout 90 detik — GAS perlu waktu untuk file besar
 
 // ── STATE ─────────────────────────────────────────────────────
 const S = { pj:[], is:[] };
@@ -482,15 +482,23 @@ async function uploadToDrive(ph, subFolder, submitter) {
     fileName:  ph.name.replace(/\.[^.]+$/,'')+'_'+Date.now()+'.jpg',
     subFolder, submitter,
   });
-  // FIX [1][4]: fetchGAS → redirect:follow + timeout 25s
   const res = await fetchGAS(SYNC_URL, {
     method:  'POST',
     headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
     body,
   });
-  // FIX [5]: error HTTP lebih informatif
   if (!res.ok) throw new Error(`Upload gagal — HTTP ${res.status} ${res.statusText}`);
-  const data = await res.json();
+  // FIX v4: safe parse — GAS kadang bungkus JSON dalam teks/HTML
+  const raw = await res.text();
+  let data = {};
+  const start = raw.indexOf('{');
+  const end   = raw.lastIndexOf('}');
+  if (start !== -1 && end !== -1) {
+    try { data = JSON.parse(raw.slice(start, end + 1)); }
+    catch(pe) { throw new Error('Response tidak valid dari server: ' + raw.slice(0, 200)); }
+  } else {
+    throw new Error('Response tidak mengandung JSON. Cek SYNC_URL dan deployment. Response: ' + raw.slice(0, 200));
+  }
   if (!data.ok) throw new Error(data.error || 'Upload ke Drive gagal (tidak ada pesan error)');
   return data;
 }
