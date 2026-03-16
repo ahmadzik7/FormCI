@@ -61,40 +61,57 @@
     border-radius:6px;padding:8px 12px;font-size:10px;color:var(--teal);
     margin-top:-4px;margin-bottom:10px;line-height:1.5;}
 
-  .photo-section-label{font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--teal);
+  /* ── ATTACHMENT SECTION ──────────────────────────────────── */
+  .attach-section-label{font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--teal);
     text-transform:uppercase;margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(20,184,166,0.25);}
-  .photo-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:14px 18px;text-align:center;
-    cursor:default;transition:border-color .2s,background .2s;background:var(--surface);}
-  .photo-zone.dragover{border-color:var(--teal);background:rgba(20,184,166,0.04);}
-  .zone-icon{font-size:26px;margin-bottom:6px;}
-  .zone-title{font-size:12px;font-weight:600;color:var(--text-dim);}
-  .zone-sub{font-size:10px;color:var(--text-muted);margin-top:3px;}
   input[type=file]{display:none;}
+  .attach-zone{border:2px dashed var(--border);border-radius:var(--radius);background:var(--surface);
+    padding:14px 16px;transition:border-color .2s,background .2s;}
+  .attach-zone.dragover{border-color:var(--teal);background:rgba(20,184,166,0.06);}
+  .zone-title{font-size:12px;font-weight:600;color:var(--text-dim);text-align:center;margin-bottom:2px;}
+  .zone-sub{font-size:10px;color:var(--text-muted);text-align:center;margin-bottom:12px;}
 
-  /* Dual-source upload buttons */
-  .photo-src-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
-  .photo-src-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:4px;padding:10px 6px;border-radius:8px;border:1.5px solid var(--border);
+  /* 3-button source row */
+  .src-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+  .src-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:3px;padding:9px 4px;border-radius:8px;border:1.5px solid var(--border);
     background:var(--surface2);cursor:pointer;transition:border-color .2s,background .2s,transform .1s;
-    font-size:11px;font-weight:600;color:var(--text-dim);line-height:1.3;user-select:none;}
-  .photo-src-btn:active{transform:scale(0.96);}
-  .photo-src-btn.btn-camera:hover,.photo-src-btn.btn-camera:focus{border-color:var(--teal);background:rgba(20,184,166,0.08);color:var(--teal);}
-  .photo-src-btn.btn-gallery:hover,.photo-src-btn.btn-gallery:focus{border-color:#818CF8;background:rgba(129,140,248,0.08);color:#818CF8;}
-  .photo-src-btn .src-icon{font-size:20px;line-height:1;}
-  .photo-src-btn.disabled{opacity:0.35;cursor:not-allowed;pointer-events:none;}
+    font-size:10px;font-weight:600;color:var(--text-dim);line-height:1.3;user-select:none;
+    -webkit-tap-highlight-color:transparent;}
+  .src-btn:active{transform:scale(0.95);}
+  .src-btn .sb-icon{font-size:18px;line-height:1;}
+  .src-btn .sb-sub{font-size:8px;font-weight:400;opacity:0.65;margin-top:1px;}
+  .src-btn.sb-cam:hover,.src-btn.sb-cam:focus{border-color:var(--teal);background:rgba(20,184,166,0.09);color:var(--teal);}
+  .src-btn.sb-gal:hover,.src-btn.sb-gal:focus{border-color:#818CF8;background:rgba(129,140,248,0.09);color:#818CF8;}
+  .src-btn.sb-file:hover,.src-btn.sb-file:focus{border-color:var(--accent);background:rgba(245,158,11,0.09);color:var(--accent);}
+  .src-btn.sb-disabled{opacity:0.32;cursor:not-allowed;pointer-events:none;}
 
-  .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;}
-  .photo-thumb{position:relative;aspect-ratio:1;border-radius:6px;overflow:hidden;border:1px solid var(--border);background:var(--surface2);}
-  .photo-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-  .del-btn{position:absolute;top:4px;right:4px;background:rgba(0,0,0,0.75);border:none;color:#fff;
-    font-size:13px;width:22px;height:22px;border-radius:50%;cursor:pointer;
+  /* Attachment list */
+  .attach-photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;}
+  .attach-file-list{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+  .att-img-wrap{position:relative;aspect-ratio:1;border-radius:6px;overflow:hidden;
+    border:1px solid var(--border);background:var(--surface2);}
+  .att-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .att-file-row{display:flex;align-items:center;gap:8px;background:var(--surface2);
+    border:1px solid var(--border);border-radius:6px;padding:8px 10px;min-height:46px;}
+  .att-icon{font-size:22px;flex-shrink:0;line-height:1;}
+  .att-info{flex:1;min-width:0;}
+  .att-name{font-size:11px;font-weight:600;color:var(--text);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .att-meta{font-size:9px;color:var(--text-muted);margin-top:2px;font-family:var(--mono);}
+  .att-badge{font-size:8px;font-family:var(--mono);padding:2px 6px;border-radius:3px;
+    font-weight:700;white-space:nowrap;flex-shrink:0;}
+  .del-btn{background:rgba(0,0,0,0.72);border:none;color:#fff;font-size:13px;
+    width:22px;height:22px;border-radius:50%;cursor:pointer;flex-shrink:0;
     display:flex;align-items:center;justify-content:center;line-height:1;}
-  .photo-badge{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.72);
-    padding:3px 5px;font-size:8px;text-align:center;font-family:var(--mono);line-height:1.2;}
-  .badge-compress{color:var(--accent);}
-  .badge-upload{color:#60A5FA;}
-  .badge-done{color:var(--success);}
-  .badge-error{color:var(--danger);}
+  .att-img-wrap .del-btn{position:absolute;top:4px;right:4px;}
+  .img-badge{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.72);
+    padding:3px 5px;font-size:8px;text-align:center;font-family:var(--mono);line-height:1.3;}
+  .badge-compress{background:rgba(245,158,11,0.15);color:var(--accent);}
+  .badge-upload{background:rgba(96,165,250,0.15);color:#60A5FA;}
+  .badge-done{background:rgba(34,197,94,0.15);color:var(--success);}
+  .badge-error{background:rgba(239,68,68,0.15);color:var(--danger);}
+  .badge-ready{background:rgba(20,184,166,0.12);color:var(--teal);}
 
   .upload-progress{margin-top:8px;display:none;}
   .upload-progress.show{display:block;}
@@ -210,31 +227,37 @@
     <textarea id="pj-notes" placeholder="Referensi, permintaan khusus, dsb..." style="min-height:60px;"></textarea>
   </div>
 
-  <div class="photo-section-label">📷 Foto Kondisi / Lokasi</div>
+  <div class="attach-section-label">📎 Lampiran — Foto / Video / File</div>
 
-  <div class="photo-zone" id="pj-photo-zone"
+  <div class="attach-zone" id="pj-attach-zone"
        ondrop="handleDrop(event,'pj')"
        ondragover="event.preventDefault();this.classList.add('dragover')"
        ondragleave="this.classList.remove('dragover')">
-    <div class="zone-icon">🖼</div>
-    <div class="zone-title" id="pj-zone-title">Pilih sumber foto</div>
-    <div class="zone-sub" id="pj-zone-sub">Maks 3 foto · Dikompres otomatis · Disimpan ke Google Drive</div>
-    <div class="photo-src-btns">
-      <button type="button" class="photo-src-btn btn-camera" id="pj-btn-cam" onclick="document.getElementById('pj-file-cam').click()">
-        <span class="src-icon">📷</span>
-        <span>Ambil Foto</span>
-        <span style="font-size:9px;font-weight:400;opacity:0.7;">Buka kamera</span>
+    <div class="zone-title" id="pj-zone-title">Tambah lampiran</div>
+    <div class="zone-sub" id="pj-zone-sub">Maks 5 lampiran · Foto dikompres otomatis · Video &amp; file langsung upload</div>
+    <div class="src-btns">
+      <button type="button" class="src-btn sb-cam" id="pj-btn-cam" onclick="document.getElementById('pj-file-cam').click()">
+        <span class="sb-icon">📷</span>
+        <span>Kamera</span>
+        <span class="sb-sub">Ambil foto</span>
       </button>
-      <button type="button" class="photo-src-btn btn-gallery" id="pj-btn-gal" onclick="document.getElementById('pj-file-gal').click()">
-        <span class="src-icon">🖼</span>
-        <span>Dari Galeri</span>
-        <span style="font-size:9px;font-weight:400;opacity:0.7;">Pilih dari galeri</span>
+      <button type="button" class="src-btn sb-gal" id="pj-btn-gal" onclick="document.getElementById('pj-file-gal').click()">
+        <span class="sb-icon">🖼</span>
+        <span>Galeri</span>
+        <span class="sb-sub">Foto / video</span>
+      </button>
+      <button type="button" class="src-btn sb-file" id="pj-btn-file" onclick="document.getElementById('pj-file-doc').click()">
+        <span class="sb-icon">📄</span>
+        <span>File</span>
+        <span class="sb-sub">PDF / dokumen</span>
       </button>
     </div>
-    <input type="file" id="pj-file-cam" accept="image/*" multiple capture="environment" onchange="handleSelect(this,'pj')">
-    <input type="file" id="pj-file-gal" accept="image/*" multiple onchange="handleSelect(this,'pj')">
+    <input type="file" id="pj-file-cam"  accept="image/*" multiple capture="environment" onchange="handleSelect(this,'pj')">
+    <input type="file" id="pj-file-gal"  accept="image/*,video/*" multiple onchange="handleSelect(this,'pj')">
+    <input type="file" id="pj-file-doc"  accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,video/*,audio/*,application/*" multiple onchange="handleSelect(this,'pj')">
   </div>
-  <div class="photo-grid" id="pj-grid"></div>
+  <div class="attach-photo-grid" id="pj-photo-grid"></div>
+  <div class="attach-file-list"  id="pj-file-list"></div>
   <div class="upload-progress" id="pj-prog">
     <div class="progress-track"><div class="progress-fill" id="pj-prog-fill" style="width:0%"></div></div>
     <div class="progress-text" id="pj-prog-lbl"></div>
@@ -309,31 +332,37 @@
     <textarea id="is-action" placeholder="Langkah darurat, bypass, isolasi yang sudah dilakukan..." style="min-height:60px;"></textarea>
   </div>
 
-  <div class="photo-section-label">📷 Foto Kondisi / Kerusakan</div>
+  <div class="attach-section-label">📎 Lampiran — Foto / Video / File</div>
 
-  <div class="photo-zone" id="is-photo-zone"
+  <div class="attach-zone" id="is-attach-zone"
        ondrop="handleDrop(event,'is')"
        ondragover="event.preventDefault();this.classList.add('dragover')"
        ondragleave="this.classList.remove('dragover')">
-    <div class="zone-icon">🖼</div>
-    <div class="zone-title" id="is-zone-title">Pilih sumber foto</div>
-    <div class="zone-sub" id="is-zone-sub">Maks 3 foto · Dikompres otomatis · Disimpan ke Google Drive</div>
-    <div class="photo-src-btns">
-      <button type="button" class="photo-src-btn btn-camera" id="is-btn-cam" onclick="document.getElementById('is-file-cam').click()">
-        <span class="src-icon">📷</span>
-        <span>Ambil Foto</span>
-        <span style="font-size:9px;font-weight:400;opacity:0.7;">Buka kamera</span>
+    <div class="zone-title" id="is-zone-title">Tambah lampiran</div>
+    <div class="zone-sub" id="is-zone-sub">Maks 5 lampiran · Foto dikompres otomatis · Video &amp; file langsung upload</div>
+    <div class="src-btns">
+      <button type="button" class="src-btn sb-cam" id="is-btn-cam" onclick="document.getElementById('is-file-cam').click()">
+        <span class="sb-icon">📷</span>
+        <span>Kamera</span>
+        <span class="sb-sub">Ambil foto</span>
       </button>
-      <button type="button" class="photo-src-btn btn-gallery" id="is-btn-gal" onclick="document.getElementById('is-file-gal').click()">
-        <span class="src-icon">🖼</span>
-        <span>Dari Galeri</span>
-        <span style="font-size:9px;font-weight:400;opacity:0.7;">Pilih dari galeri</span>
+      <button type="button" class="src-btn sb-gal" id="is-btn-gal" onclick="document.getElementById('is-file-gal').click()">
+        <span class="sb-icon">🖼</span>
+        <span>Galeri</span>
+        <span class="sb-sub">Foto / video</span>
+      </button>
+      <button type="button" class="src-btn sb-file" id="is-btn-file" onclick="document.getElementById('is-file-doc').click()">
+        <span class="sb-icon">📄</span>
+        <span>File</span>
+        <span class="sb-sub">PDF / dokumen</span>
       </button>
     </div>
-    <input type="file" id="is-file-cam" accept="image/*" multiple capture="environment" onchange="handleSelect(this,'is')">
-    <input type="file" id="is-file-gal" accept="image/*" multiple onchange="handleSelect(this,'is')">
+    <input type="file" id="is-file-cam"  accept="image/*" multiple capture="environment" onchange="handleSelect(this,'is')">
+    <input type="file" id="is-file-gal"  accept="image/*,video/*" multiple onchange="handleSelect(this,'is')">
+    <input type="file" id="is-file-doc"  accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,video/*,audio/*,application/*" multiple onchange="handleSelect(this,'is')">
   </div>
-  <div class="photo-grid" id="is-grid"></div>
+  <div class="attach-photo-grid" id="is-photo-grid"></div>
+  <div class="attach-file-list"  id="is-file-list"></div>
   <div class="upload-progress" id="is-prog">
     <div class="progress-track"><div class="progress-fill" id="is-prog-fill" style="width:0%"></div></div>
     <div class="progress-text" id="is-prog-lbl"></div>
@@ -349,7 +378,11 @@
 // ══════════════════════════════════════════════════════════════
 // CI FORM v3 — Fixed for integration with CI Dashboard v16
 //
-// CHANGELOG v3:
+// CHANGELOG v4:
+//   NEW  Dual-source photo + file attachment (kamera / galeri / dokumen)
+//   NEW  Upload video, PDF, Word, Excel, dan file lain dari galeri/file manager
+//   FIX  Timeout naik 25s → 90s untuk file besar
+//   FIX  Safe JSON parse response GAS (tidak lagi crash jika ada wrapper teks)
 //   FIX [1] redirect:'follow' pada SEMUA fetch ke Apps Script
 //           → tanpa ini, browser menolak redirect dari Apps Script
 //   FIX [2] Kategori project disesuaikan dgn value yg dikenal dashboard
@@ -363,13 +396,15 @@
 
 // ── CONFIG ────────────────────────────────────────────────────
 const SYNC_URL         = 'https://script.google.com/macros/s/AKfycbxiRrms3MTgxlHWoQP0u0ACtUzbO-WPLl3IIUKdfvoH96DFdnIss8BwAfuMgnkD_U3X/exec';
-const MAX_PHOTOS       = 3;
-const COMPRESS_MAX_PX  = 1024;
-const COMPRESS_QUALITY = 0.60;
-const MAX_ORIGINAL_MB  = 15;
-const FETCH_TIMEOUT_MS = 90000;  // v4: 90 detik — GAS butuh waktu untuk file besar
+const MAX_ATTACH       = 5;       // maks total lampiran per form
+const MAX_FILE_MB      = 50;      // batas ukuran per file (MB)
+const COMPRESS_MAX_PX  = 1024;    // max dimensi foto setelah kompres
+const COMPRESS_QUALITY = 0.60;    // kualitas JPEG kompres
+const FETCH_TIMEOUT_MS = 90000;   // 90 detik untuk upload besar
 
 // ── STATE ─────────────────────────────────────────────────────
+// Setiap item: { id, name, fileObj, localUrl, isImage, mimeType,
+//   base64, origSize, compSize, status, errMsg, driveUrl, driveId }
 const S = { pj:[], is:[] };
 
 // ── TABS ──────────────────────────────────────────────────────
@@ -386,30 +421,39 @@ const todayStr = () => { const d=new Date(); return d.getFullYear()+'-'+String(d
 const fmtBytes = b  => b<1024?b+'B':b<1048576?(b/1024).toFixed(0)+'KB':(b/1048576).toFixed(1)+'MB';
 const safeName = s  => (s||'').replace(/[\\/:*?"<>|]/g,'').trim().slice(0,50)||'Form';
 
-// ── FIX [1][4]: Wrapper fetch dengan redirect:follow + timeout ─
+// Ikon file berdasarkan mime/ekstensi
+function fileIcon(name, mime) {
+  if (mime && mime.startsWith('video/'))  return '🎬';
+  if (mime && mime.startsWith('audio/'))  return '🎵';
+  const ext = (name||'').split('.').pop().toLowerCase();
+  if (['pdf'].includes(ext))              return '📕';
+  if (['doc','docx'].includes(ext))       return '📝';
+  if (['xls','xlsx','csv'].includes(ext)) return '📊';
+  if (['ppt','pptx'].includes(ext))       return '📋';
+  if (['zip','rar','7z'].includes(ext))   return '🗜';
+  if (['txt'].includes(ext))              return '📄';
+  return '📎';
+}
+
+// ── FETCH WRAPPER ─────────────────────────────────────────────
 async function fetchGAS(url, options={}) {
   const controller = new AbortController();
   const tid = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
   try {
-    const res = await fetch(url, {
-      ...options,
-      redirect: 'follow',           // FIX [1]: Apps Script selalu redirect — wajib follow
-      signal:   controller.signal,
-    });
+    const res = await fetch(url, { ...options, redirect:'follow', signal:controller.signal });
     clearTimeout(tid);
     return res;
   } catch(e) {
     clearTimeout(tid);
-    // FIX [4]: Pesan timeout yang jelas
-    if (e.name === 'AbortError') throw new Error('Request timeout (>25 detik). Cek koneksi atau coba lagi.');
+    if (e.name === 'AbortError') throw new Error('Request timeout (>90 detik). Cek koneksi atau coba lagi.');
     throw e;
   }
 }
 
-// ── COMPRESSION ────────────────────────────────────────────────
+// ── COMPRESSION (foto saja) ───────────────────────────────────
 function compressImage(file) {
   return new Promise((res, rej) => {
-    if (file.size > MAX_ORIGINAL_MB * 1048576) { rej(new Error('File terlalu besar (>'+MAX_ORIGINAL_MB+'MB)')); return; }
+    if (file.size > MAX_FILE_MB * 1048576) { rej(new Error('File terlalu besar (>' + MAX_FILE_MB + 'MB)')); return; }
     const reader = new FileReader();
     reader.onerror = rej;
     reader.onload = ev => {
@@ -435,79 +479,132 @@ function compressImage(file) {
   });
 }
 
-// ── PHOTO HANDLERS ─────────────────────────────────────────────
-function handleSelect(input, p) { processFiles([...input.files], p); input.value=''; }
-function handleDrop(e, p) {
-  e.preventDefault();
-  document.getElementById(p+'-photo-zone').classList.remove('dragover');
-  processFiles([...e.dataTransfer.files].filter(f=>f.type.startsWith('image/')), p);
+// base64 untuk file non-gambar (video, pdf, dll)
+function fileToBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onerror = rej;
+    r.onload  = e => res(e.target.result.split(',')[1]);
+    r.readAsDataURL(file);
+  });
 }
 
-async function processFiles(files, p) {
-  const avail = MAX_PHOTOS - S[p].length;
-  if (!avail) { alert('Maksimal '+MAX_PHOTOS+' foto.'); return; }
+// ── ATTACHMENT HANDLERS ───────────────────────────────────────
+function handleSelect(input, p) { addFiles([...input.files], p); input.value=''; }
+function handleDrop(e, p) {
+  e.preventDefault();
+  document.getElementById(p+'-attach-zone').classList.remove('dragover');
+  addFiles([...e.dataTransfer.files], p);
+}
+
+async function addFiles(files, p) {
+  const avail = MAX_ATTACH - S[p].length;
+  if (!avail) { alert('Maksimal ' + MAX_ATTACH + ' lampiran per laporan.'); return; }
   const batch = files.slice(0, avail);
-  setProgress(p, true, 'Mengkompres foto...', 5);
-  for (let i=0; i<batch.length; i++) {
-    const file = batch[i];
-    const idx  = S[p].length;
-    S[p].push({ name:file.name, localUrl:URL.createObjectURL(file), status:'compressing',
-                base64:null, mimeType:null, origSize:file.size, compSize:null });
-    renderGrid(p);
-    setProgress(p, true, `Mengkompres ${i+1}/${batch.length}...`, Math.round(10+(i/batch.length)*60));
+  setProgress(p, true, 'Memproses lampiran...', 5);
+
+  for (let i = 0; i < batch.length; i++) {
+    const file    = batch[i];
+    const isImage = file.type.startsWith('image/');
+    if (file.size > MAX_FILE_MB * 1048576) {
+      alert('File "' + file.name + '" melebihi batas ' + MAX_FILE_MB + 'MB — dilewati.');
+      continue;
+    }
+    const localUrl = isImage ? URL.createObjectURL(file) : null;
+    const idx = S[p].length;
+    S[p].push({
+      id: genId('att'), name: file.name, fileObj: file,
+      localUrl, isImage, mimeType: file.type || 'application/octet-stream',
+      base64: null, origSize: file.size, compSize: null,
+      status: isImage ? 'compressing' : 'reading', errMsg: null,
+      driveUrl: null, driveId: null,
+    });
+    renderAttachments(p);
+    setProgress(p, true, `Memproses ${i+1}/${batch.length}: ${file.name}...`, Math.round(10 + (i/batch.length)*70));
+
     try {
-      const r = await compressImage(file);
-      Object.assign(S[p][idx], { base64:r.base64, mimeType:r.mimeType, compSize:r.compSize,
-        localUrl:r.dataUrl, status:'ready' });
+      if (isImage) {
+        const r = await compressImage(file);
+        Object.assign(S[p][idx], {
+          base64: r.base64, mimeType: r.mimeType,
+          compSize: r.compSize, localUrl: r.dataUrl, status: 'ready',
+        });
+      } else {
+        const b64 = await fileToBase64(file);
+        Object.assign(S[p][idx], { base64: b64, status: 'ready' });
+      }
     } catch(err) {
       S[p][idx].status = 'error'; S[p][idx].errMsg = err.message;
     }
-    renderGrid(p);
+    renderAttachments(p);
   }
   setProgress(p, false);
   updateZone(p);
 }
 
-function renderGrid(p) {
-  const grid = document.getElementById(p+'-grid');
-  if (!S[p].length) { grid.innerHTML=''; return; }
-  grid.innerHTML = S[p].map((ph,i) => {
-    const badge = ph.status==='compressing' ? `<div class="photo-badge badge-compress">⏳ kompres</div>`
-      : ph.status==='uploading' ? `<div class="photo-badge badge-upload">⬆ upload</div>`
-      : ph.status==='done'      ? `<div class="photo-badge badge-done">✅ Drive</div>`
-      : ph.status==='error'     ? `<div class="photo-badge badge-error">❌ ${ph.errMsg||'error'}</div>`
-      : ph.compSize ? `<div class="photo-badge badge-done">${fmtBytes(ph.compSize)}</div>` : '';
-    return `<div class="photo-thumb">
-      <img src="${ph.localUrl}" alt="foto ${i+1}">
+function renderAttachments(p) {
+  const photoGrid = document.getElementById(p+'-photo-grid');
+  const fileList  = document.getElementById(p+'-file-list');
+  const images    = S[p].filter(a => a.isImage);
+  const others    = S[p].filter(a => !a.isImage);
+
+  // Render foto sebagai grid thumbnail
+  photoGrid.innerHTML = images.map((att) => {
+    const i = S[p].indexOf(att);
+    let badge = '';
+    if      (att.status==='compressing') badge = `<div class="img-badge badge-compress">⏳ kompres…</div>`;
+    else if (att.status==='uploading')   badge = `<div class="img-badge badge-upload">⬆ upload…</div>`;
+    else if (att.status==='done')        badge = `<div class="img-badge badge-done">✅ Drive</div>`;
+    else if (att.status==='error')       badge = `<div class="img-badge badge-error">❌ ${att.errMsg||'error'}</div>`;
+    else if (att.compSize)               badge = `<div class="img-badge badge-ready">${fmtBytes(att.compSize)}</div>`;
+    return `<div class="att-img-wrap">
+      <img src="${att.localUrl}" alt="${att.name}">
       ${badge}
-      <button class="del-btn" onclick="removePhoto('${p}',${i})">×</button>
+      <button class="del-btn" onclick="removeAttach('${p}',${i})">×</button>
+    </div>`;
+  }).join('');
+
+  // Render file lain sebagai list row
+  fileList.innerHTML = others.map((att) => {
+    const i = S[p].indexOf(att);
+    let badgeHtml = '';
+    if      (att.status==='reading')   badgeHtml = `<span class="att-badge badge-compress">⏳ baca…</span>`;
+    else if (att.status==='uploading') badgeHtml = `<span class="att-badge badge-upload">⬆ upload…</span>`;
+    else if (att.status==='done')      badgeHtml = `<span class="att-badge badge-done">✅ Drive</span>`;
+    else if (att.status==='error')     badgeHtml = `<span class="att-badge badge-error">❌ gagal</span>`;
+    else if (att.status==='ready')     badgeHtml = `<span class="att-badge badge-ready">✓ siap</span>`;
+    const meta = fmtBytes(att.origSize) + (att.mimeType ? ' · ' + att.mimeType.split('/')[1] : '');
+    return `<div class="att-file-row">
+      <span class="att-icon">${fileIcon(att.name, att.mimeType)}</span>
+      <div class="att-info">
+        <div class="att-name">${att.name}</div>
+        <div class="att-meta">${meta}${att.errMsg ? ' · ❌ '+att.errMsg : ''}</div>
+      </div>
+      ${badgeHtml}
+      <button class="del-btn" onclick="removeAttach('${p}',${i})">×</button>
     </div>`;
   }).join('');
 }
 
-function removePhoto(p, i) { S[p].splice(i,1); renderGrid(p); updateZone(p); }
+function removeAttach(p, i) { S[p].splice(i, 1); renderAttachments(p); updateZone(p); }
 
 function updateZone(p) {
   const n    = S[p].length;
-  const full = n >= MAX_PHOTOS;
-
-  // Update teks
+  const full = n >= MAX_ATTACH;
   const titleEl = document.getElementById(p+'-zone-title');
   const subEl   = document.getElementById(p+'-zone-sub');
   if (titleEl) titleEl.textContent = full
-    ? MAX_PHOTOS + ' foto (maksimal tercapai)'
-    : n > 0 ? n + ' foto dipilih — tambah lagi jika perlu'
-    : 'Pilih sumber foto';
+    ? MAX_ATTACH + ' lampiran (maksimal tercapai)'
+    : n > 0 ? n + ' lampiran dipilih — tambah lagi jika perlu'
+    : 'Tambah lampiran';
   if (subEl) subEl.textContent = full
-    ? 'Hapus salah satu foto untuk mengganti'
-    : n > 0 ? 'Maks ' + (MAX_PHOTOS - n) + ' foto lagi · Dikompres otomatis'
-    : 'Maks 3 foto · Dikompres otomatis · Disimpan ke Google Drive';
-
-  // Disable/enable tombol sumber foto
-  const camBtn = document.getElementById(p+'-btn-cam');
-  const galBtn = document.getElementById(p+'-btn-gal');
-  if (camBtn) camBtn.classList.toggle('disabled', full);
-  if (galBtn) galBtn.classList.toggle('disabled', full);
+    ? 'Hapus salah satu untuk menambah lagi'
+    : n > 0 ? 'Maks ' + (MAX_ATTACH - n) + ' lampiran lagi · Foto dikompres otomatis'
+    : 'Maks ' + MAX_ATTACH + ' lampiran · Foto dikompres otomatis · Video & file langsung upload';
+  ['cam','gal','file'].forEach(k => {
+    const btn = document.getElementById(p+'-btn-'+k);
+    if (btn) btn.classList.toggle('sb-disabled', full);
+  });
 }
 
 function setProgress(p, show, lbl='', pct=0) {
@@ -520,55 +617,61 @@ function setProgress(p, show, lbl='', pct=0) {
 }
 
 // ── DRIVE UPLOAD ─────────────────────────────────────────────
-async function uploadToDrive(ph, subFolder, submitter) {
+async function uploadAttachment(att, subFolder, submitter) {
+  // Tentukan fileName: foto pakai .jpg, lainnya pakai nama asli + timestamp
+  const ext      = att.isImage ? '.jpg' : ('.' + att.name.split('.').pop());
+  const baseName = att.name.replace(/\.[^.]+$/, '');
+  const fileName = baseName + '_' + Date.now() + ext;
+
   const body = JSON.stringify({
-    action:    'uploadPhoto',
-    photoData: ph.base64,
-    mimeType:  ph.mimeType,
-    fileName:  ph.name.replace(/\.[^.]+$/,'')+'_'+Date.now()+'.jpg',
+    action:    'uploadPhoto',       // Apps Script handler sama untuk semua file
+    photoData: att.base64,
+    mimeType:  att.mimeType,
+    fileName:  fileName,
     subFolder, submitter,
   });
-  // FIX [1][4]: fetchGAS → redirect:follow + timeout 25s
   const res = await fetchGAS(SYNC_URL, {
     method:  'POST',
     headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
     body,
   });
-  if (!res.ok) throw new Error(`Upload gagal — HTTP ${res.status} ${res.statusText}`);
-  // v4: safe parse — GAS kadang bungkus JSON dalam teks/HTML
-  const raw = await res.text();
-  let data = {};
-  const start = raw.indexOf('{');
-  const end   = raw.lastIndexOf('}');
-  if (start !== -1 && end !== -1) {
-    try { data = JSON.parse(raw.slice(start, end + 1)); }
-    catch(pe) { throw new Error('Response tidak valid dari server: ' + raw.slice(0, 200)); }
-  } else {
-    throw new Error('Response tidak mengandung JSON. Cek SYNC_URL & deployment. Response: ' + raw.slice(0, 200));
-  }
-  if (!data.ok) throw new Error(data.error || 'Upload ke Drive gagal (tidak ada pesan error)');
-  return data;
+  if (!res.ok) throw new Error('Upload gagal — HTTP ' + res.status + ' ' + res.statusText);
+  // Safe parse response GAS
+  const raw   = await res.text();
+  const si    = raw.indexOf('{');
+  const ei    = raw.lastIndexOf('}');
+  if (si === -1 || ei === -1) throw new Error('Response tidak valid: ' + raw.slice(0, 200));
+  let json;
+  try { json = JSON.parse(raw.slice(si, ei+1)); }
+  catch(pe) { throw new Error('Parse error: ' + raw.slice(0, 200)); }
+  if (!json.ok) throw new Error(json.error || 'Upload ke Drive gagal');
+  return json;
 }
 
 async function uploadAll(p, subFolder, submitter) {
-  const ready = S[p].filter(ph=>ph.status==='ready'&&ph.base64);
+  const ready = S[p].filter(a => a.status === 'ready' && a.base64);
   if (!ready.length) return [];
   const results = [];
-  for (let i=0; i<ready.length; i++) {
-    const ph  = ready[i];
-    const idx = S[p].indexOf(ph);
-    setProgress(p, true, `Upload foto ${i+1}/${ready.length} ke Google Drive...`,
-      Math.round(60+(i/ready.length)*35));
-    S[p][idx].status='uploading'; renderGrid(p);
+  for (let i = 0; i < ready.length; i++) {
+    const att = ready[i];
+    const idx = S[p].indexOf(att);
+    setProgress(p, true,
+      `Upload ${att.isImage?'foto':'file'} ${i+1}/${ready.length}: ${att.name}...`,
+      Math.round(60 + (i/ready.length)*35));
+    S[p][idx].status = 'uploading'; renderAttachments(p);
     try {
-      const r = await uploadToDrive(ph, subFolder, submitter);
-      S[p][idx].driveUrl=r.viewUrl; S[p][idx].driveId=r.fileId; S[p][idx].status='done';
-      results.push({ name:ph.name, viewUrl:r.viewUrl, thumbUrl:r.thumbUrl, fileId:r.fileId });
+      const r = await uploadAttachment(att, subFolder, submitter);
+      S[p][idx].driveUrl = r.viewUrl; S[p][idx].driveId = r.fileId; S[p][idx].status = 'done';
+      results.push({
+        name: att.name, type: att.isImage?'image':'file',
+        mimeType: att.mimeType, size: att.origSize,
+        viewUrl: r.viewUrl, thumbUrl: r.thumbUrl||null, fileId: r.fileId,
+      });
     } catch(err) {
-      S[p][idx].status='error'; S[p][idx].errMsg=err.message;
-      results.push({ name:ph.name, error:err.message });
+      S[p][idx].status = 'error'; S[p][idx].errMsg = err.message;
+      results.push({ name: att.name, error: err.message });
     }
-    renderGrid(p);
+    renderAttachments(p);
   }
   setProgress(p, false);
   return results;
@@ -622,9 +725,13 @@ function validate(fields) {
 // ── SHOW STATUS ───────────────────────────────────────────────
 function showStatus(p, type, icon, title, msg, links) {
   const box = document.getElementById(p+'-status');
-  const linksHtml = links?.filter(l=>l.viewUrl).length
-    ? `<div class="drive-links"><p>📁 Foto tersimpan di Google Drive:</p>`
-      + links.filter(l=>l.viewUrl).map((l,i)=>`<a class="drive-link" href="${l.viewUrl}" target="_blank">📷 Foto ${i+1} — Lihat di Drive</a>`).join('<br>')
+  const uploaded = (links||[]).filter(l=>l.viewUrl);
+  const linksHtml = uploaded.length
+    ? `<div class="drive-links"><p>📁 Lampiran tersimpan di Google Drive:</p>`
+      + uploaded.map((l,i)=>{
+          const ico = l.type==='image'?'🖼':fileIcon(l.name,l.mimeType);
+          return `<a class="drive-link" href="${l.viewUrl}" target="_blank">${ico} ${l.name||'Lampiran '+(i+1)} — Lihat di Drive</a>`;
+        }).join('<br>')
       + '</div>'
     : '';
   box.className='status-box show '+type;
@@ -641,7 +748,7 @@ function resetForm(p) {
     if(el.type==='select-one') el.selectedIndex=el.id.includes('prio')?1:0;
     else if(el.type!=='file') el.value='';
   });
-  S[p]=[]; renderGrid(p); updateZone(p);
+  S[p]=[]; renderAttachments(p); updateZone(p);
   document.getElementById(p+'-status').className='status-box';
   const btn=document.getElementById(p+'-btn');
   btn.disabled=false;
@@ -659,7 +766,7 @@ async function submitProject() {
   const projName  = document.getElementById('pj-name').value.trim();
   try {
     const sub    = safeName('PROJECT_'+projName+'_'+todayStr());
-    const photos = await uploadAll('pj', sub, submitter);
+    const attachments = await uploadAll('pj', sub, submitter);
 
     btn.innerHTML = '<span class="spinner"></span> Menyimpan ke dashboard...';
     const data = await loadData();
@@ -676,7 +783,7 @@ async function submitProject() {
       notes:     document.getElementById('pj-notes').value.trim(),
       status:    'open', progress:0, matStatus:'pending', phases:[],
       createdAt: Date.now(), submittedBy: submitter,
-      photos, driveFolder: sub,
+      attachments, driveFolder: sub,
       _source: 'ci-form', _submittedAt: new Date().toISOString(),
     };
 
@@ -691,11 +798,11 @@ async function submitProject() {
     const activityLog = [log,  ...(data.activityLog || [])];
     await pushData({ ...data, projects, activityLog });
 
-    const n = photos.filter(ph=>ph.viewUrl).length;
+    const n = attachments.filter(a=>a.viewUrl).length;
     showStatus('pj','success','✅','Request Berhasil Dikirim!',
       `Project "<strong>${projName}</strong>" telah masuk ke dashboard CI.`
-      +(n?`<br>📷 ${n} foto disimpan di Google Drive (folder: <em>${sub}</em>).`:'')
-      +`<br><br>Tim CI akan menentukan jadwal pengerjaan.`, photos);
+      +(n?`<br>📎 ${n} lampiran disimpan di Google Drive (folder: <em>${sub}</em>).`:'')
+      +`<br><br>Tim CI akan menentukan jadwal pengerjaan.`, attachments);
 
   } catch(err) {
     console.error('[submitProject]', err);
@@ -716,7 +823,7 @@ async function submitIssue() {
   const issueName = document.getElementById('is-name').value.trim();
   try {
     const sub    = safeName('ISSUE_'+issueName+'_'+todayStr());
-    const photos = await uploadAll('is', sub, submitter);
+    const attachments = await uploadAll('is', sub, submitter);
 
     btn.innerHTML='<span class="spinner"></span> Menyimpan ke dashboard...';
     const data = await loadData();
@@ -732,7 +839,7 @@ async function submitIssue() {
       downtime:    document.getElementById('is-downtime').value || '0',
       actionTaken: document.getElementById('is-action').value.trim(),
       status:      'open', createdAt: Date.now(), submittedBy: submitter,
-      photos, driveFolder: sub,
+      attachments, driveFolder: sub,
       _source: 'ci-form', _submittedAt: new Date().toISOString(),
     };
 
@@ -747,11 +854,11 @@ async function submitIssue() {
     const activityLog = [log,   ...(data.activityLog || [])];
     await pushData({ ...data, issues, activityLog });
 
-    const n = photos.filter(ph=>ph.viewUrl).length;
+    const n = attachments.filter(a=>a.viewUrl).length;
     showStatus('is','success','✅','Laporan Berhasil Dikirim!',
       `Laporan "<strong>${issueName}</strong>" telah masuk ke dashboard CI.`
       +(n?`<br>📷 ${n} foto disimpan di Google Drive (folder: <em>${sub}</em>).`:'')
-      +`<br><br>Tim CI akan segera menindaklanjuti laporan ini.`, photos);
+      +`<br><br>Tim CI akan segera menindaklanjuti laporan ini.`, attachments);
 
   } catch(err) {
     console.error('[submitIssue]', err);
